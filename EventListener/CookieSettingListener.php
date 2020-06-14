@@ -44,7 +44,7 @@ class CookieSettingListener
 
         if (!$request->cookies->has($this->cookieName)
                 || $request->cookies->get($this->cookieName) !== $request->getLocale()) {
-            $event->getResponse()->headers->setCookie(new Cookie($this->cookieName, $request->getLocale(), time() + $this->cookieLifetime, $this->cookiePath, $this->cookieDomain, $this->cookieSecure, $this->cookieHttponly));
+            $event->getResponse()->headers->setCookie(Cookie::create($this->cookieName, $request->getLocale(), time() + $this->cookieLifetime, $this->cookiePath, $this->cookieDomain, $this->cookieSecure, $this->cookieHttponly));
         }
     }
 }
